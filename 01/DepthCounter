@@ -1,0 +1,28 @@
+import math
+
+file = open('input.txt', "r")
+input = []
+
+for line in file.readlines():
+  input.append((int(line.strip("\n"))))
+
+file.close()
+
+posChanges = []
+threeSum = []
+posChangesThreeSum = []
+
+for i in range(len(input)-1):
+  a = input[i+1] - input[i] > 0
+  posChanges.append(a)
+
+for i in range(len(input)-2):
+  a = sum(input[i:i+3])
+  threeSum.append(a)
+
+for i in range(len(threeSum)-1):
+  a = (threeSum[i+1] - threeSum[i]) > 0
+  posChangesThreeSum.append(a)
+
+print(sum(posChanges))
+print(sum(posChangesThreeSum))
