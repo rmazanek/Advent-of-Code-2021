@@ -1,5 +1,5 @@
 file = open('directions.txt', 'r')
-aHoriz, aDepth, bHoriz, bDepth, aim = 0, 0, 0, 0, 0
+aHoriz, aDepth, bHoriz, bDepth = 0, 0, 0, 0
 
 for line in file.readlines():
   direction, value = line.strip("\n").split(" ")
@@ -7,13 +7,11 @@ for line in file.readlines():
   if(direction == 'forward'):
     aHoriz+=value
     bHoriz+=value
-    bDepth+=value*aim
-  if(direction == 'down'):
+    bDepth+=value*aDepth #aim is depth from part A
+  elif(direction == 'down'):
     aDepth+=value
-    aim+=value
-  if(direction == 'up'):
+  else:
     aDepth-=value
-    aim-=value
 
 print("Part A: " + str(aHoriz*aDepth))
-print("Part B: " + str(bHoriz * bDepth))
+print("Part B: " + str(bHoriz*bDepth))
